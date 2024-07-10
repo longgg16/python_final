@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jingja output</title>
+</head>
+<body>
+<h1>
+    output
+</h1>
+<hr>
+<h3>
+    1. operater + - * /
+</h3>
+<h6>{{ 1+2 }}</h6>
+<h6>{{ 1-2 }}</h6>
+<h6>{{ 1*2 }}</h6>
+<h6>{{ 1/2 }}</h6>
+<hr>
+
+<h3> 2. loop function </h3>
+{% for i in range(9) %}
+    {{ i }}
+{% endfor %}
+<hr>
+
+<h3>
+    3. block title
+</h3>
+{% block title %}testinggggg{% endblock %}
+<hr>
+
+<h3>
+    4. Variable Declaration
+</h3>
+{% set price = 123 %}
+{{ price }}
+<hr>
+
+<h3>
+    5. Multiple Variable Declaration
+</h3>
+{% set a, b, c = '1', '2', '3' %}
+a: {{ a }}, b: {{ b }}, c: {{ c }}
+<hr>
+
+<h3>
+    6. submit form
+</h3>
+<form action="/" method="post">
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name">
+    <input type="submit" value="SUBMIT">
+</form>
+<hr>
+
+{% set students = [
+    {'name': 'kak', 'age': 21, 'gender': 'Male'},
+    {'name': 'Long', 'age': 23, 'gender': 'feMale'},
+    {'name': 'Tek ', 'age': 23, 'gender': 'Male'},
+    {'name': 'heng', 'age': 22, 'gender': 'Female'}
+] %}
+<h3>
+    7. Student List
+</h3>
+<ul>
+    {% for student in students %}
+        <li>
+            Name: {{ student.name }}<br>
+            Age: {{ student.age }}<br>
+            Gender: {{ student.gender }}<br>
+        </li>
+    {% endfor %}
+</ul>
+<hr>
+<h3>
+    8. with function
+</h3>
+{% with %}
+    {% set total_students = students | length %}
+    Total students: {{ total_students }} students
+{% endwith %}
+<hr>
+<h3>
+    9. white space control
+</h3>
+hiiii {{-" long" }} <br>
+M {{ 2 -}} 3 years old
+<hr>
+
+<h3>
+    10. Number Conversions round to int
+</h3>
+{{ hour | round | int }}
+<hr>
+
+<h3>
+    11. date format
+</h3>
+{{ now.strftime('%A-%b-%Y') }}
+<hr>
+
+<h3>
+    12. URL
+</h3>
+<a href="{{ url_for("home") }}" class="button">Ruturn</a>
+<hr>
+
+<h3>
+    13. jingja output
+</h3>
+{{ "Jinja Output" }}
+<hr>
+
+<h3>
+    14. control statement
+</h3>
+{% if hour > 5 and hour < 12 %}
+    Morning!!!!
+{% elif hour >= 12 and hour < 17 %}
+    Afternoon!!!
+{% elif hour >= 17 and hour < 21 %}
+    Evening!!!!
+{% elif hour >= 21 and hour < 23 %}
+    night!!!
+{% endif %}
+<hr>
+
+<h3>
+    15. Ternary Conditional
+</h3>
+{% set time = "Morning!!!!" if hour > 5 and hour < 12
+else ("Afternoon!!!" if hour >= 12 and hour < 17
+else "Evening!!!!") %}
+{{ time }}
+<hr>
+
+<h3>
+    16. String Concatenation
+</h3>
+{{ "It is " ~ hour ~ " AM/PM" }}
+<hr>
+<h3>
+    17. include
+</h3>
+{% include 'test.html' %}
+test.html
+<hr>
+
+<h3>
+    18. set message
+</h3>
+{% set message %}
+hiiiiiiiiiiiii<br>
+testing
+{% endset %}
+{{ message }}
+
+<h3>
+    19. dynamic class
+</h3>
+<p class="{{ 'highlight' if condition else 'normal' }}">
+    testinggg</p>
+
+{% set animals = [
+                    {'name': 'dog', 'age': 1, 'color': 'gold'},
+                    {'name': 'cat', 'age': 2, 'color': 'white'}
+                ] %}
+
+<h3>20. Animal List</h3>
+<ul>
+    {% for animal in animals %}
+        <li>
+            Name: {{ animal.name }}<br>
+            Age: {{ animal.age }}<br>
+            Gender: {{ animal.color }}<br>
+        </li>
+    {% endfor %}
+</ul>
+<h3>21. Safe</h3>
+<ul>
+   {{ '<div>kawaii</div>' | safe}}
+</ul>
+
+</body>
+</html>
